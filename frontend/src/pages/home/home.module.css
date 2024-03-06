@@ -1,0 +1,26 @@
+.banner {
+    position: relative;
+    width: 100vw;
+    height: 400px;
+    display: flex;
+}
+.bannerImg {
+    width: 100%;
+    object-fit: cover;
+}
+.bannerContent {
+    position: absolute;
+    margin: auto;
+    padding: 30px;
+    height: 200px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0 ;
+    right: 100px;
+    width: 300px;
+    background: white;
+    font-size: 1.3rem;
+}
+.bannerContent h3 {
+    margin-top: 0;
+}
