@@ -24,3 +24,8 @@
 .bannerContent h3 {
     margin-top: 0;
 }
+.featuresContainer {
+    display: flex;
+    padding: 40px;
+    justify-content: space-between;
+}

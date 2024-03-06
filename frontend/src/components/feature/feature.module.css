@@ -1,0 +1,21 @@
+.feature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    min-width: 340px;
+    text-align: center;
+}
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid #00bc77;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+.circle img {
+    width: 100px;
+}
