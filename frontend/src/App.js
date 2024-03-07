@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Footer from './components/footer/footer';
 import Home from './pages/home/home';
 import Header from './components/header/header';
+import SignIn from './pages/signin/signin';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
       path: "signin",
       element: <>
       <Header />
-      <div>Bienvenue sur la page de connexion</div>
+      <SignIn />
       </>
     }
 ])

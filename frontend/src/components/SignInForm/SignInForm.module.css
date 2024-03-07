@@ -1,0 +1,60 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    margin-top: 3rem;
+    padding: 2rem;
+    height: min-content;
+    background-color: white;
+}
+.formContainer h2 {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.formContainer svg {
+    scale: 1.6;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+}
+.inputWrapper label {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.inputWrapper input {
+    font-size: 1.2rem;
+    width: 200px;
+    padding: 5px 20px;
+}
+.checkboxWrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    font-size: 1.1rem;
+}
+.checkboxWrapper input:checked {
+    accent-color: #00bc77;
+}
+.submitButton {
+    background-color: #00bc77;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    height: 35px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.submitButton:hover {
+    filter: brightness(1.1);
+}
