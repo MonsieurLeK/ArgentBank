@@ -26,6 +26,21 @@
 }
 .featuresContainer {
     display: flex;
+    flex-wrap: wrap;
     padding: 40px;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 1100px) {
+    .featuresContainer {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .bannerContent {
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
 }
