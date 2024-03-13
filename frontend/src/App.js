@@ -4,6 +4,7 @@ import Footer from './components/footer/footer';
 import Home from './pages/home/home';
 import Header from './components/header/header';
 import SignIn from './pages/signin/signin';
+import UserPage from './pages/userPage/userPage';
 
 const router = createBrowserRouter([
   {
@@ -14,13 +15,21 @@ const router = createBrowserRouter([
     </>,
     errorElement: <div>ERREUR 404 MAGGLE</div>,
   },
-    {
-      path: "signin",
-      element: <>
-      <Header />
-      <SignIn />
-      </>
-    }
+  {
+    path: "signin",
+    element: <>
+    <Header />
+    <SignIn />
+    </>
+  },
+  {
+    path: "user",
+    element: <>
+    <Header />
+    <UserPage />
+    </>
+  },
+
 ])
 
 function App() {

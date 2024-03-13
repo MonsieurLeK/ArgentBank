@@ -2,6 +2,7 @@
   "name": "argent-bank-api",
   "version": "0.0.1",
   "private": true,
+  "proxy": "http://localhost:3001",
   "description": "Project #10 - Argent Bank",
   "keywords": [],
   "author": "",
