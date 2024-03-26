@@ -1,10 +1,13 @@
 import styles from './userPage.module.css'
 import GreenButton from '../../components/greenButton/greenButton'
 import AccountCheck from '../../components/accountCheck/accountCheck'
+import { useSelector } from 'react-redux'
 
 function UserPage() {
 
     const userName = 'Tony Jarvis'
+    const isUserConnected = useSelector((state) => state.user)
+    console.log(isUserConnected)
 
     return <section className={styles.background} >
         <h2 className={styles.title}>Welcome back<br/>{userName}!</h2>

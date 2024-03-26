@@ -10,12 +10,12 @@ function SignInForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+
     const dispatch = useDispatch()
     const signInEvent = (e) => {
         e.preventDefault()
         let userCredentials = {email, password}
         dispatch(signInUser(userCredentials))
-        
     }
 
     return <article className={styles.formContainer} onSubmit={signInEvent} >
