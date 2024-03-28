@@ -4,18 +4,30 @@ import {faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { signInUser } from '../../store/UserSlice'
+import { useNavigate } from "react-router-dom"
+import store from "../../store/redux"
 
 function SignInForm() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const navigate = useNavigate()
 
+    const redirect = () => {
+        setTimeout( () => {
+        if (store.getState().user.userToken){
+            navigate("/")
+        } else {
+            console.log("gros nul")
+        }}, 500)
+    }
 
     const dispatch = useDispatch()
     const signInEvent = (e) => {
         e.preventDefault()
         let userCredentials = {email, password}
         dispatch(signInUser(userCredentials))
+        redirect()
     }
 
     return <article className={styles.formContainer} onSubmit={signInEvent} >

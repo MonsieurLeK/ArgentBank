@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux'
 function UserPage() {
 
     const userName = 'Tony Jarvis'
-    const isUserConnected = useSelector((state) => state.user)
-    console.log(isUserConnected)
+    const user = useSelector((state) => state.user)
+    console.log(user)
 
     return <section className={styles.background} >
         <h2 className={styles.title}>Welcome back<br/>{userName}!</h2>
