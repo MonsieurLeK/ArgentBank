@@ -1,16 +1,18 @@
 import styles from './userPage.module.css'
 import GreenButton from '../../components/greenButton/greenButton'
 import AccountCheck from '../../components/accountCheck/accountCheck'
-import { useSelector } from 'react-redux'
+import store from '../../store/redux'
+import ErrorPage from '../errorPage/errorPage'
 
 function UserPage() {
 
-    const userName = 'Tony Jarvis'
-    const user = useSelector((state) => state.user)
-    console.log(user)
+    const userToken = store.getState().user.userToken
+    const userFirstName = store.getState().user.userFirstName
+    const userLastName = store.getState().user.userLastName
 
+    if (userToken) {
     return <section className={styles.background} >
-        <h2 className={styles.title}>Welcome back<br/>{userName}!</h2>
+        <h2 className={styles.title}>Welcome back<br/>{userFirstName} {userLastName} !</h2>
         <GreenButton value='Edit Name' />
         <div className={styles.accountContainer} >
         <AccountCheck accountType='Checking' 
@@ -23,7 +25,11 @@ function UserPage() {
         priceValue='184.30'
         availableOrCurrent='Current' />
         </div>
-    </section>
+    </section>} else {
+        return <>
+            <ErrorPage />
+        </>
+    }
 }
 
 export default UserPage

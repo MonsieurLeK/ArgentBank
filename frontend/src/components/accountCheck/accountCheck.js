@@ -1,6 +1,7 @@
 import styles from './accountCheck.module.css'
 
 function AccountCheck(props) {
+    
     return <article className={styles.container}>
         <div className={styles.textContainer}>
             <h3 className={styles.text}>Argent Bank {props.accountType}</h3>

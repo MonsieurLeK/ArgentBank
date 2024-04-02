@@ -20,21 +20,49 @@ export const signInUser = createAsyncThunk(
     }
 )
 
+export const userProfile = createAsyncThunk(
+    'user/profile',
+    async(userToken) => {
+        const getProfile = await fetch('http://localhost:3001/api/v1/user/profile', {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${userToken}` ,
+                "Content-Type": "application/json",
+            }
+        })
+        .then(response => response.json())
+        .then(data => data.body)
+        return getProfile
+    }
+)
+
 
 const userSlice = createSlice({
     name: 'user',
     initialState: {
         isConnected: false,
         userToken: '',
-        user: null,
+        userFirstName: '',
+        userLastName: '',
+        userId: '',
+        userName: '',
         error: null
     },
     extraReducers: (builder) => {
         builder.addCase(signInUser.fulfilled, (state, action) => {
             state.userToken = action.payload
             state.isConnected =  true
+        },
+        builder.addCase(userProfile.fulfilled, (state, action) => {
+            const { firstName, lastName, id, username } = action.payload
+            state.userFirstName = firstName
+            state.userLastName = lastName
+            state.userId = id
+            state.userName = username
         })
+        )
     }
+
 })
 
 

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { signInUser } from '../../store/UserSlice'
+import { signInUser, userProfile } from '../../store/UserSlice'
 import { useNavigate } from "react-router-dom"
 import store from "../../store/redux"
 
@@ -16,6 +16,8 @@ function SignInForm() {
     const redirect = () => {
         setTimeout( () => {
         if (store.getState().user.userToken){
+            const userToken = store.getState().user.userToken
+            dispatch(userProfile(userToken))
             navigate("/")
         } else {
             console.log("gros nul")
