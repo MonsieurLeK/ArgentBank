@@ -16,8 +16,6 @@ function SignInForm() {
     const redirect = () => {
         setTimeout( () => {
         if (store.getState().user.userToken){
-            const userToken = store.getState().user.userToken
-            dispatch(userProfile(userToken))
             navigate("/")
         } else {
             console.log("gros nul")
@@ -29,6 +27,10 @@ function SignInForm() {
         e.preventDefault()
         let userCredentials = {email, password}
         dispatch(signInUser(userCredentials))
+        setTimeout(() => {
+            const userToken = store.getState().user.userToken
+            dispatch(userProfile(userToken))
+        }, 400);
         redirect()
     }
 

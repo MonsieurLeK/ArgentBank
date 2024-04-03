@@ -23,3 +23,7 @@
 .link:hover {
     text-decoration: underline;
 }
+.nav {
+    display: flex;
+    gap: 20px;
+}

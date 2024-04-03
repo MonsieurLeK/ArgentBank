@@ -3,6 +3,7 @@ import GreenButton from '../../components/greenButton/greenButton'
 import AccountCheck from '../../components/accountCheck/accountCheck'
 import store from '../../store/redux'
 import ErrorPage from '../errorPage/errorPage'
+import { Navigate } from 'react-router-dom'
 
 function UserPage() {
 
@@ -26,9 +27,7 @@ function UserPage() {
         availableOrCurrent='Current' />
         </div>
     </section>} else {
-        return <>
-            <ErrorPage />
-        </>
+       return <Navigate replace to="/" />
     }
 }
 

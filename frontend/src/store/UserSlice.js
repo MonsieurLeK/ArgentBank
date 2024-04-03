@@ -36,17 +36,23 @@ export const userProfile = createAsyncThunk(
     }
 )
 
+const initialState = {
+    isConnected: false,
+    userToken: '',
+    userFirstName: '',
+    userLastName: '',
+    userId: '',
+    userName: '',
+    error: null
+}
 
 const userSlice = createSlice({
     name: 'user',
-    initialState: {
-        isConnected: false,
-        userToken: '',
-        userFirstName: '',
-        userLastName: '',
-        userId: '',
-        userName: '',
-        error: null
+    initialState,
+    reducers: {
+        resetState: () => {
+            return initialState
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(signInUser.fulfilled, (state, action) => {
@@ -65,6 +71,5 @@ const userSlice = createSlice({
 
 })
 
-
-
+export const { resetState } = userSlice.actions
 export default userSlice
