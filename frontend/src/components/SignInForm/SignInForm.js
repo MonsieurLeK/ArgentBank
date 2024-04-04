@@ -11,6 +11,7 @@ function SignInForm() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [errorMessage, setErrorMessage] = useState(false)
     const navigate = useNavigate()
 
     const redirect = () => {
@@ -18,7 +19,7 @@ function SignInForm() {
         if (store.getState().user.userToken){
             navigate("/")
         } else {
-            console.log("gros nul")
+            setErrorMessage(true)
         }}, 500)
     }
 
@@ -29,7 +30,9 @@ function SignInForm() {
         dispatch(signInUser(userCredentials))
         setTimeout(() => {
             const userToken = store.getState().user.userToken
-            dispatch(userProfile(userToken))
+            if (userToken) {
+                dispatch(userProfile(userToken))
+            }
         }, 400);
         redirect()
     }
@@ -52,6 +55,7 @@ function SignInForm() {
             <input type='checkbox' id='rememberMe' ></input>
             <label for="rememberMe" >Remember me</label>
         </div>
+        <span className={errorMessage ? styles.errorMessage : styles.hiddenErrorMessage}>Incorrect e-mail or password ! :/</span>
         <input type='submit' value="Sign In" className={styles.submitButton} ></input>
         </form>
     </article>

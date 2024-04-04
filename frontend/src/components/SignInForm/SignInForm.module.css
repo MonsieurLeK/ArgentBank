@@ -1,4 +1,6 @@
 .formContainer {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -45,6 +47,7 @@
     accent-color: #00bc77;
 }
 .submitButton {
+    z-index: 2;
     background-color: #00bc77;
     border: none;
     border-radius: 0;
@@ -57,4 +60,20 @@
 }
 .submitButton:hover {
     filter: brightness(1.1);
+}
+.hiddenErrorMessage {
+    position: absolute;
+    z-index: 1;
+    color: red;
+    bottom: 66px;
+    transform: translateY(21px);
+    transition: transform 0.3s ease;
+}
+.errorMessage {
+    position: absolute;
+    z-index: 1;
+    color: red;
+    bottom: 66px;
+    transform: translateY(0px);
+    transition: transform 0.3s ease;
 }

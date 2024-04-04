@@ -26,7 +26,7 @@ function UserPage() {
         availableOrCurrent='Current' />
         </div>
     </section>} else {
-       return <Navigate replace to="/" />
+       return <Navigate replace to="/signin" />
     }
 }
 
