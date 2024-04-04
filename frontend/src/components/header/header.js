@@ -2,16 +2,15 @@ import styles from './header.module.css'
 import logo from '../../assets/img/argentBankLogo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleUser, faRightFromBracket} from '@fortawesome/free-solid-svg-icons'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import store from '../../store/redux'
 import userSlice from '../../store/UserSlice'
 
 function Header() {
     const userToken = store.getState().user.userToken
-    const navigate = useNavigate()
 
     if (userToken){
-        const userFirstName = store.getState().user.userFirstName
+        const userName = store.getState().user.userName
 
         return <header className={styles.header}>
             <Link to='/'>
@@ -19,7 +18,7 @@ function Header() {
             </Link>
             <nav className={styles.nav}>
                 <Link to='/user' className={styles.link}>
-                    <FontAwesomeIcon icon={faCircleUser} className='icon' />{userFirstName}
+                    <FontAwesomeIcon icon={faCircleUser} className='icon' />{userName}
                 </Link>
                 <Link className={styles.link} onClick={store.dispatch(userSlice.actions.resetState)} >
                     <FontAwesomeIcon icon={faRightFromBracket} />

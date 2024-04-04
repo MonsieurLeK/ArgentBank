@@ -2,7 +2,6 @@ import styles from './userPage.module.css'
 import GreenButton from '../../components/greenButton/greenButton'
 import AccountCheck from '../../components/accountCheck/accountCheck'
 import store from '../../store/redux'
-import ErrorPage from '../errorPage/errorPage'
 import { Navigate } from 'react-router-dom'
 
 function UserPage() {

@@ -32,6 +32,7 @@ export const userProfile = createAsyncThunk(
         })
         .then(response => response.json())
         .then(data => data.body)
+        .catch(error => console.log(error))
         return getProfile
     }
 )
@@ -60,11 +61,11 @@ const userSlice = createSlice({
             state.isConnected =  true
         },
         builder.addCase(userProfile.fulfilled, (state, action) => {
-            const { firstName, lastName, id, username } = action.payload
+            const { firstName, lastName, id, userName } = action.payload
             state.userFirstName = firstName
             state.userLastName = lastName
             state.userId = id
-            state.userName = username
+            state.userName = userName
         })
         )
     }
