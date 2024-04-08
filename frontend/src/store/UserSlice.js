@@ -37,6 +37,25 @@ export const userProfile = createAsyncThunk(
     }
 )
 
+export const changeUserName = createAsyncThunk(
+    'user/changeUserName',
+    async(userToken, newUserName) => {
+        const changeName = await fetch('http://localhost:3001/api/v1/user/profile', {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${userToken}` ,
+            },
+            body:{
+                "userName": {newUserName}
+            }
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+        return changeName
+    }
+)
+
 const initialState = {
     isConnected: false,
     userToken: '',
@@ -56,6 +75,9 @@ const userSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
+        builder.addCase(changeUserName.fulfilled, (state, action) => {
+            state.userName = action.payload
+        })
         builder.addCase(signInUser.fulfilled, (state, action) => {
             state.userToken = action.payload
             state.isConnected =  true
