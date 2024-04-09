@@ -47,9 +47,13 @@
 .inputWrapperReadonly input {
     font-size: 1.1rem;
     width: 170px;
+    background: grey;
 }
 .inputWrapper input::placeholder {
     color: #282c34;
+}
+.inputWrapperReadonly input::placeholder {
+    color: black;
 }
 .modaleForm {
     height: auto;
@@ -61,9 +65,14 @@
     overflow: hidden;
     transition: height 0.2s ease;
 }
+.buttonContainer {
+    display: flex;
+    gap: 20px;
+}
 .button {
     border-color: #00bc77;
     background-color: #00bc77;
+    width: 130px;
     color: #fff;
     font-weight: bold;
     padding: 10px;
@@ -72,4 +81,7 @@
 
 .button:hover {
     filter: brightness(1.1);
+}
+.hidden {
+    display: none;
 }

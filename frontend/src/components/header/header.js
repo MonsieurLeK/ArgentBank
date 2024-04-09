@@ -4,13 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleUser, faRightFromBracket} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import store from '../../store/redux'
-import userSlice from '../../store/UserSlice'
+import { resetState } from '../../store/UserSlice'
+import { useSelector } from "react-redux"
 
 function Header() {
     const userToken = store.getState().user.userToken
+    const userName = useSelector(state => state.user.userName)
 
     if (userToken){
-        const userName = store.getState().user.userName
 
         return <header className={styles.header}>
             <Link to='/'>
@@ -20,7 +21,7 @@ function Header() {
                 <Link to='/user' className={styles.link}>
                     <FontAwesomeIcon icon={faCircleUser} className='icon' />{userName}
                 </Link>
-                <Link className={styles.link} onClick={store.dispatch(userSlice.actions.resetState)} >
+                <Link className={styles.link} onClick={resetState()} >
                     <FontAwesomeIcon icon={faRightFromBracket} />
                     Sign Out
                 </Link>

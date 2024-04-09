@@ -4,6 +4,7 @@ import store from '../../store/redux'
 import { Navigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { changeUserName } from '../../store/UserSlice'
+import { useState } from 'react'
 
 
 function UserPage() {
@@ -12,11 +13,12 @@ function UserPage() {
     const userName = store.getState().user.userName
     const userFirstName = store.getState().user.userFirstName
     const userLastName = store.getState().user.userLastName
-    const [newUserName, setNewUserName] = ""
+    const [newUserName, setNewUserName] = useState("")
+    const [formHidden, setFormHidden] = useState(true)
     const dispatch = useDispatch()
     const changeUserNameEvent = (e) => {
         e.preventDefault()
-        dispatch(changeUserName(userToken, newUserName))
+        dispatch(changeUserName({userToken, newUserName}))
     }
   
 
@@ -24,22 +26,26 @@ function UserPage() {
     return <section className={styles.background} >
         <h2 className={styles.title}>Welcome back<br/>{userFirstName} {userLastName} !</h2>
         <div>
-            <form className={styles.userNameForm} onSubmit={changeUserNameEvent}>
+            <form className={formHidden?`${styles.userNameForm} ${styles.hidden}` : styles.userNameForm} onSubmit={changeUserNameEvent}>
                 <div className={styles.inputWrapper}>
                     <label for="userName">User name:</label>
-                    <input id="userName" value={newUserName} placeholder={userName}
-                    onChange={setNewUserName}/>
+                    <input id="userName" type='text' value={newUserName} placeholder={userName}
+                    onChange={(e) => setNewUserName(e.target.value)}/>
                 </div>
                 <div className={styles.inputWrapperReadonly}>
                     <label for="firstName">First name:</label>
-                    <input id="firstName" readOnly="readonly" placeholder={userFirstName} />
+                    <input id="firstName" disabled type='text' readOnly="readonly" placeholder={userFirstName} />
                 </div>
                 <div className={styles.inputWrapperReadonly}>
                     <label for="lastName">Last name:</label>
-                    <input id="lastName" readOnly="readonly" placeholder={userLastName} />
+                    <input id="lastName" disabled type='text' readOnly="readonly" placeholder={userLastName} />
                 </div>
-                <input type='submit' value="Edit Name" className={styles.button} />
+                <div className={styles.buttonContainer} >
+                    <input type='submit' value="Save" className={styles.button} />
+                    <input type='button' value="Cancel" className={styles.button} onClick={() => setFormHidden(true)} />
+                </div>
             </form>
+            <input type='button' value="Edit Name" className={formHidden ? styles.button : `${styles.button} ${styles.hidden}`} onClick={() => setFormHidden(false)} />
         </div>
         <div className={styles.accountContainer} >
         <AccountCheck accountType='Checking' 
